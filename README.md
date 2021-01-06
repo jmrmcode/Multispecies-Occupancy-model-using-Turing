@@ -7,7 +7,7 @@ This repository contains the Julia code to implement the multispecies occupancy 
 The [Stan code](https://datadryad.org/stash/dataset/doi:10.5061/dryad.pq624) used by these authors to fit the co-occurrence probability of four carnivore species has been adapted to Julia language in order to fit simulated data on two arbitrary species.
 
 ### DataSimulation.jl
-DataSimulation.jl generates detections history for two species at 100 sites surveyed 30 times.
+DataSimulation.jl generates detections history for two species at 100 sites surveyed 10 times, as well as all the inputs required by the model. This file must be run first.
 ### MultispeciesOccupancyModel.jl 
 MultispeciesOccupancyModel.jl fits Rota et al's multispecies model to the simulated data. The natural parameters are estimated as:
 
