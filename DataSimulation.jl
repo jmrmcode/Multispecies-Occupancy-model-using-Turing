@@ -2,7 +2,7 @@ using Random
 using Distributions
 using StatsFuns: logistic
 
-###**** DATA SIMULATION (for two species)*****######
+#####**** DATA SIMULATION (for two species)
 
 Random.seed!(2345)
 S = 100  # number of sites
@@ -107,7 +107,7 @@ for i in 1:length(Sp1Detections[:, 1])
     sumDetectSp2[i] = sum(Sp2Detections[i, :])
 end
 
-#####**** COMPILE THE INPUTS REQUIRED BY THE MODEL *****###################
+#####**** COMPILE THE INPUTS REQUIRED BY THE MODEL
 # x1detc and x2detc
 x1detc = Array{Float64}(undef, S, J)
 x2detc = Array{Float64}(undef, S, J)
