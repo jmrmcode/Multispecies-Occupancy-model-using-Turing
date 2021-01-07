@@ -17,4 +17,4 @@ f<sub>2</sub> = x'<sub>&beta;</sub> * &beta;
 
 f<sub>12</sub> = &gamma;
 
-where x'<sub>&alpha;</sub> and x'<sub>&beta;</sub> are vectors of covariates and &alpha;, &beta;, and &gamma; are vectors of parameters (see Rota et al 2016 for more details). Also, species detectability is not assumed to be constant across sites and it is estimated as a function of covariates.
+where x'<sub>&alpha;</sub> and x'<sub>&beta;</sub> are vectors of covariates and &alpha;, &beta;, and &gamma; are vectors of parameters (see Rota et al 2016 for more details). Species detectability is not assumed to be constant across sites and it is also estimated as a function of covariates.
