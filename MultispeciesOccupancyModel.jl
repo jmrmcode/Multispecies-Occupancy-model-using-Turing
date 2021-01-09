@@ -16,19 +16,20 @@ using NNlib: softmax
     z = Array{Any}(undef, S, C)
     
     # priors
-    interceptDetectSp1 ~ Logistic(0, 1)
-    interceptDetectSp2 ~ Logistic(0, 1)
+    interceptDetectSp1 ~ Normal(0, σ2)
+    interceptDetectSp2 ~ Normal(0, σ2)
     covariateDetectSp1 ~ Normal(0, σ2)
     covariateDetectSp2 ~ Normal(0, σ2)
-    α0 ~ Logistic(0, 1)
-    α1 ~ Normal(0, 1)
-    β0 ~ Logistic(0, 1)
+    α0 ~ Normal(0, σ2)
+    α1 ~ Normal(0, σ2)
+    β0 ~ Normal(0, σ2)
     β1 ~ Normal(0, σ2)
     γ0 ~ Normal(0, σ2)
     jointOccupCov = [α0; α1; β0; β1; γ0]
 
+    l = length(I_Sp1)
     # likelihood
-    for s in S # (loop over sites)
+    for s in 1:l # (loop over sites)
         # detection probability at each replicate survey (lp in Rota et al)
         DetecProbSp1 = logistic.(interceptDetectSp1 .+ covariateDetectSp1 .* x1detc[s, :])
         DetecProbSp2 = logistic.(interceptDetectSp2 .+ covariateDetectSp2 .* x2detc[s, :])
