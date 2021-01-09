@@ -4,12 +4,11 @@ using StatsFuns: logistic
 
 #####**** DATA SIMULATION (for two species)
 
-Random.seed!(12)
 S = 100  # number of sites
-J = 2 # number of surveys at each site
+J = 4 # number of surveys at each site
 C = 4 # number of unique combination of 1s and 0s
 
-## linear predictor for marginal Sp1 occupancy
+## linear predictor for marginal sp1 occupancy
 # continuous predictor
 x1occpancy = rand(Normal(0, 1), S)
 # matrix X1
@@ -18,12 +17,12 @@ X1occupancy = Array{Float64}(undef, S, 2)
 for i in 1:S
         X1occupancy[i, :] = vcat(1, x1occpancy[i])
     end
-# coeffcients vector (model parameters)
-β1occupancy = vcat(1, 2)
-# probability of presence (occupancy)
+# coefficients vector for sp1 occupancy
+β1occupancy = vcat(1, -2)
+# probability of occupancy
 ψ_10 = logistic.(X1occupancy * β1occupancy)
 
-# detection history
+# occupancy sp1
 z_10 = Array{Bool}(undef, S, 1)
 for i in 1:S
     z_10[i] = rand(Bernoulli(ψ_10[i]), i)[1]
@@ -38,12 +37,12 @@ X1detection = Array{Float64}(undef, S, 2)
 for i in 1:S
         X1detection[i, :] = vcat(1, x1detection[i])
     end
-# coeffcients vector (model parameters)
-β1detection = vcat(1, -1)
+# coefficients vector for sp1 detectability
+β1detection = vcat(1, -2)
 # probability of presence (occupancy)
 p_Sp1 = logistic.(X1detection * β1detection)
 
-# detection history
+# detection history sp1
 Sp1Detections = Array{Real}(undef, S, J) # declare data structure
 # populate detection history
 for s in 1:S
@@ -67,12 +66,12 @@ X2occupancy = Array{Float64}(undef, S, 2)
 for i in 1:S
         X2occupancy[i, :] = vcat(1, x2occpancy[i])
     end
-# coeffcients vector (model parameters)
-β2occupancy = vcat(1, -2)
-# probability of presence (occupancy)
+# coefficients vector for sp2 occupancy
+β2occupancy = vcat(1, 3)
+# probability of occupancy
 ψ_01 = logistic.(X2occupancy * β2occupancy)
 
-# detection history
+# occupancy sp2
 z_01 = Array{Bool}(undef, S, 1)
 for i in 1:S
     z_01[i] = rand(Bernoulli(ψ_01[i]), i)[1]
@@ -87,12 +86,12 @@ X2detection = Array{Float64}(undef, S, 2)
 for i in 1:S
         X2detection[i, :] = vcat(1, x2detection[i])
     end
-# coeffcients vector (model parameters)
+# coefficients vector for sp2 detectability
 β2detection = vcat(1, 2)
 # probability of presence (occupancy)
 p_Sp2 = logistic.(X2detection * β2detection)
 
-# detection history
+# detection history sp2
 Sp2Detections = Array{Real}(undef, S, J) # declare data structure
 # populate detection history
 for s in 1:S
