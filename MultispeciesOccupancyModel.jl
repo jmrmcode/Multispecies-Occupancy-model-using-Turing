@@ -69,3 +69,13 @@ NUTS(1000, .95), 1000, drop_warmup = false), chainscat, 1:3)
 
 # print outcome
 display(outcome)
+
+# plot
+gr(leg = true, bg = :black)
+@df outcome violin(:α0, side=:right, linewidth = 0, colour = "orange", label="α0", legend = :topleft)
+@df outcome violin!(:α1, side=:right, linewidth = 0, label="α1", colour = "orange")
+@df outcome violin!(:β0, side=:right, linewidth = 0, label="β0", colour = "green")
+@df outcome violin!(:β1, side=:right, linewidth = 0, label="β1", colour = "green")
+@df outcome violin!(:γ0, side=:right, linewidth = 0, label="γ0", colour = "red")
+plot!([0], seriestype = :hline, colour = "white", linestyle = :dash, label = "")
+
