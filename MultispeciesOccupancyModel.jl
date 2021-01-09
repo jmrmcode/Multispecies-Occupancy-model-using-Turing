@@ -64,7 +64,7 @@ using NNlib: softmax
     end
 
 # Start the No-U-Turn Sampler (NUTS)
-outcome = mapreduce(c -> sample(multisppOccupancy(x1detc, x2detc, Sp1Detections, Sp2Detections, x, I_Sp1, I_Sp2, 3),
+outcome = mapreduce(c -> sample(multisppOccupancy(x1detc, x2detc, Sp1Detections, Sp2Detections, x, I_Sp1, I_Sp2, 10),
 NUTS(1000, .95), 1000, drop_warmup = false), chainscat, 1:3)
 
 # print outcome
