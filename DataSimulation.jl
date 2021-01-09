@@ -4,9 +4,9 @@ using StatsFuns: logistic
 
 #####**** DATA SIMULATION (for two species)
 
-Random.seed!(2345)
+Random.seed!(12)
 S = 100  # number of sites
-J = 10 # number of surveys at each site
+J = 2 # number of surveys at each site
 C = 4 # number of unique combination of 1s and 0s
 
 ## linear predictor for marginal Sp1 occupancy
@@ -19,7 +19,7 @@ for i in 1:S
         X1occupancy[i, :] = vcat(1, x1occpancy[i])
     end
 # coeffcients vector (model parameters)
-β1occupancy = vcat(0, 2)
+β1occupancy = vcat(1, 2)
 # probability of presence (occupancy)
 ψ_10 = logistic.(X1occupancy * β1occupancy)
 
@@ -39,7 +39,7 @@ for i in 1:S
         X1detection[i, :] = vcat(1, x1detection[i])
     end
 # coeffcients vector (model parameters)
-β1detection = vcat(0, -1)
+β1detection = vcat(1, -1)
 # probability of presence (occupancy)
 p_Sp1 = logistic.(X1detection * β1detection)
 
@@ -68,7 +68,7 @@ for i in 1:S
         X2occupancy[i, :] = vcat(1, x2occpancy[i])
     end
 # coeffcients vector (model parameters)
-β2occupancy = vcat(0, -2)
+β2occupancy = vcat(1, -2)
 # probability of presence (occupancy)
 ψ_01 = logistic.(X2occupancy * β2occupancy)
 
@@ -88,7 +88,7 @@ for i in 1:S
         X2detection[i, :] = vcat(1, x2detection[i])
     end
 # coeffcients vector (model parameters)
-β2detection = vcat(0, 2)
+β2detection = vcat(1, 2)
 # probability of presence (occupancy)
 p_Sp2 = logistic.(X2detection * β2detection)
 
