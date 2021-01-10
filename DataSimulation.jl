@@ -127,7 +127,7 @@ for i in 1:S
 end
 
 # I_Sp1 and I_Sp2 are vectors of length the number of sites (S) that contains whether (1) or not (0)
-# each species was detected at each site
+# the species were detected at each site
 I_Sp1 = Array{Int64}(undef, S)
 I_Sp2 = Array{Int64}(undef, S)
 # populate I_Sp1
