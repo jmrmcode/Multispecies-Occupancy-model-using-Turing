@@ -31,9 +31,9 @@ end
 ## linear predictor for marginal Sp1 detection
 # continuous predictor
 x1detection = rand(Normal(0, 2), S)
-# matrix X2
+# matrix X1
 X1detection = Array{Float64}(undef, S, 2)
-# populate matrix X2
+# populate matrix X1
 for i in 1:S
         X1detection[i, :] = vcat(1, x1detection[i])
     end
@@ -60,9 +60,9 @@ end
 ## linear predictor for marginal Sp2 occupancy
 # continuous predictor
 x2occpancy = rand(Normal(0, 1.5), S)
-# matrix X1
+# matrix X2
 X2occupancy = Array{Float64}(undef, S, 2)
-# populate matrix X1
+# populate matrix X2
 for i in 1:S
         X2occupancy[i, :] = vcat(1, x2occpancy[i])
     end
