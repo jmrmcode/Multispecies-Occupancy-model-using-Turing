@@ -110,3 +110,12 @@ using StatsFuns: logistic
 
        end
     end
+# Settings of the Hamiltonian Monte Carlo (HMC) sampler
+iterations = 2000
+ϵ = 0.01
+τ = 5
+outcome = mapreduce(c -> sample(multisppOccupancy(bobcatBM, coyoteBM, grayFoxBM, redFoxBM, XX_detectionProb, X, I_bobcat, I_coyote, I_grayFox, I_redFox),
+Gibbs(
+    HMC{Turing.ForwardDiffAD{12}}(ϵ, τ, :p_parametersBOB,:p_parametersCO, :p_parametersGF,:p_parametersRF),
+    HMC{Turing.TrackerAD}(ϵ, τ, :ψ_parameters)
+), iterations, drop_warmup = false, progress = true, verbose = true), chainscat, 1:2)
