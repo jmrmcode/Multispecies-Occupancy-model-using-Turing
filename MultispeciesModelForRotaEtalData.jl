@@ -1,3 +1,5 @@
+## BEFORE RUNNING THE CODE BELOW, YOU MAY WANT TO RUN FormatingRotaetalData.jl
+
 using BenchmarkTools
 using StatsFuns
 using SpecialFunctions
